@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Rakennuksen valiaikaiset tiedostot
+_build/
+build/
+dist/
+*.spec.bak
+
+# Suuret jakelutiedostot (jaetaan GitHub Releasessa)
+Asenna-WebEditori.exe
+Asenna-WebEditori.zip
+
+# Testien tulostiedostot
+testitulos.html
+testi_tulos.txt
+testi_virhe.txt

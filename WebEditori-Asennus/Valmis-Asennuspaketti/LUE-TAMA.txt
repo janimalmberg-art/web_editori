@@ -1,0 +1,32 @@
+﻿GRAAFINEN WEB-EDITORI 4.0 - ASENNUSPAKETTI
+==========================================
+Tehnyt Jani Malmberg
+
+ASENTAMINEN (klikkaa ja asenna)
+-------------------------------
+1. Kaksoisnapsauta tiedostoa: Asenna-WebEditori.exe
+2. Seuraa ohjattua asennusta: valitse asennuskansio ja pikakuvakkeet.
+3. Kun asennus on valmis, ohjelma aukeaa tyopoydalta tai
+   Kaynnista-valikosta (WebEditori).
+
+Paketti sisaltaa KAIKKI ohjelman riippuvuudet (PyQt5-ymparisto ja
+selainymparisto), joten Pythonia ei tarvitse asentaa erikseen.
+Asennus ei vaadi jarjestelmanvalvojan oikeuksia (asennus omalle
+kayttajatilille).
+
+HILJAINEN ASENNUS (ilman valikoita)
+-----------------------------------
+Asenna-WebEditori.exe /hiljainen
+Valinnaiset liput:
+  /kohde=C:\oma\polku   asennuskansio
+                        (oletus: %LOCALAPPDATA%\Programs\WebEditori)
+  /eipikakuvia          ei pikakuvakkeita eika rekisterimerkintoja
+
+OHJELMAN POISTAMINEN
+--------------------
+Aja asennuskansiossa: Poista-WebEditori.cmd
+tai: Asetukset > Sovellukset > Graafinen web-editori > Poista.
+
+KAYTTOOHJE
+----------
+Ohjeet.txt (asennuskansiossa, loytyy myos Apua-valikosta).

@@ -1,0 +1,82 @@
+WEB-EDITORI ASENNUSPAKETTI - KANSION KUVAUS
+===========================================
+
+Tama kansio sisaltaa tyokalut, joilla web-editori (editori.py)
+paketoidaan Windows-graafiseksi asennusohjelmaksi.
+
+TEHDYT TIEDOSTOT
+----------------
+asennusohjelma.py   Asennusvelhon lahdekoodi (PyQt5-pohjainen ohjattu
+                    toiminto: Tervetuloa -> Asennuskansio -> Valinnat ->
+                    Asennus -> Valmis).
+rakenna.py          Rakennusskripti, joka kattaa editorin itsenaiseksi
+                    ohjelmaksi (PyInstaller) ja rakentaa asennusohjelmasta
+                    yhden klikattavan Asenna-WebEditori.exe-tiedoston.
+ikoni.ico           Ohjelmaikkoni (luodaan rakennuksessa).
+_build/             Rakennuksen valiaikaiset tiedostot (voi poistaa).
+Valmis-Asennuspaketti/
+                    Lopulliset jakelutiedostot:
+                    - Asenna-WebEditori.exe   (asennusohjelma, klikkaa ja asenna)
+                    - Asenna-WebEditori.zip   (sama exe zipattuna jakeluun)
+                    - LUE-TAMA.txt            (lyhyet asennusohjeet)
+
+ASENNUSPAKETIN RAKENTAMINEN
+---------------------------
+1. Avaa komentokehote tahan kansioon.
+2. Aja:  python rakenna.py
+   (vaatii: pip install pyinstaller PyQt5 PyQtWebEngine PyQtWebChannel pillow)
+3. Valmiit tiedostot ilmestyvat kansioon Valmis-Asennuspaketti.
+
+ASENTAMINEN OHJELMATIEDOSTOSTA
+------------------------------
+Kaksoisnapsauta Asenna-WebEditori.exe ja seuraa ohjattua asennusta.
+Asennus asentaa ohjelman JA kaikki riippuvuudet (PyQt5 + selainymparisto
+on mukana paketissa, Pythonia ei tarvita).
+
+Hiljainen asennus (ilman valikoita):
+    Asenna-WebEditori.exe /hiljainen
+    Asenna-WebEditori.exe /hiljainen /kohde=C:\oma\polku
+    Asenna-WebEditori.exe /hiljainen /eipikakuvia
+
+POISTO
+------
+Aja asennuskansiossa: Poista-WebEditori.cmd
+tai Asetukset > Sovellukset > Graafinen web-editori > Poista.
+
+TEKNISET TIEDOT
+---------------
+- Asennuskohde: %LOCALAPPDATA%\Programs\WebEditori (per-kayttaja-asennus,
+  ei vaadi jarjestelmanvalvojan oikeuksia).
+- Rekisterimerkinta (valinnainen): HKCU\Software\Microsoft\Windows\
+  CurrentVersion\Uninstall\WebEditori -> ohjelma nakykoo
+  "Sovellukset"-luettelossa ja poisto toimii Asetuksista.
+- Loki: %TEMP%\WebEditori-Asennus.log
+- Tehnyt Jani Malmberg, versio 4.0.
+
+TESTAUS JA APUSKRIPTIT
+----------------------
+apuskriptit (asenna taustalla pitkaaikaisten komentojen ajon hallintaan):
+    kaynnista_rakennus.py  Kaynnistaa rakenna.py taustalla
+                           (loki _build/rakennus.log, PID _build/rakennus.pid)
+    polla.py               Nayttaa taustaprosessin tilan ja lokin loppu.
+                           python polla.py  (rakennus)
+                           python polla.py _build/testi.log _build/testi.pid
+
+automatisoitu testi (vahvistettu toimivaksi):
+    aja_testi.py           Kaynnistaa asennustestin taustalla
+                           (loki _build/testi.log)
+    asennus_testi.py       Testaa koko paketin: hiljainen asennus
+                           C:\Users\PC\Desktop\ASENNUS-TESTI\WebEditori ->
+                           tiedostojen tarkistus -> ohjelman kaynnistys ->
+                           velhon kaynnistys -> hiljainen poisto ->
+                           siivous. 10/11 tarkistusta viela jaljella
+                           oleva rivi on offscreen-testiraja (alla).
+    aja_diag.py            Kaynnistaa diagnoosin taustalla
+                           (loki _build/diag.log)
+    diag_ohjelma.py        Eristaa kaynnistysongelman: todistaa etta
+                           paketoitu WebEditori.exe kaynnistyy
+                           NORMAALITILASSA (elossa 15 s). QT_QPA_PLATFORM=
+                           offscreen ei toimi QtWebEngine:n kanssa
+                           (access violation 0xC0000005 myos
+                           lahdetiedostolla) - kaynista ohjelma
+                           nakyvasti testatessa.

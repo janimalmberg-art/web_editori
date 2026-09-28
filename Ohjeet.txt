@@ -1,0 +1,124 @@
+GRAAFINEN WEB-EDITORI 4.0
+Tehnyt Jani Malmberg
+==========================================
+
+TÄMÄ ON
+Ohjelmalla luot kotisivuja ja materiaalia ilman HTML-osaamista.
+Muokkaat suoraan oikean puolen näkymää, ja vasemman puolen koodi
+päivittyy automaattisesti. Sivut toimivat yleisimmillä selaimilla
+(Chrome, Firefox, Edge ja Safari).
+
+KÄYNNISTYS
+----------
+Kaksoisnapsauta: Käynnistä-Editori.bat
+(tai aja komennolla: python editori.py)
+
+Vaatii Pythonin ja PyQt5-kirjaston:
+    pip install PyQt5 PyQtWebEngine PyQtWebChannel
+
+PERUSIDEA
+---------
+- Muokkaa AINA oikean puolen näkymää: klikkaa tekstiä ja kirjoita.
+- Vasemman koodi päivittyy automaattisesti – koodia ei tarvitse osata.
+- Klikkaamalla aluetta se valitaan (sininen kehys) ja tilapalkki
+  kertoo, mitä kohdistit.
+
+TEKSTI JA MUOTOILU
+------------------
+- Valitse teksti hiirellä ja käytä Lihavoi/Kursivoi/Väri/Keskitä -nappeja.
+- Otsikko-napista saat otsikkotason (H1–H6); tyhjä kenttä tekee
+  uuden otsikon kohdistimen kohdalle.
+- Kappale-nappi lisää uuden tekstikappaleen.
+- Linkki-nappi tekee linkin valittuun tekstiin tai lisää uuden.
+
+SISÄLLÖN LISÄÄMINEN (Lisää-valikko ja toinen työkalurivi)
+---------------------------------------------------------
+- Kuva tiedostosta: kuva upotetaan suoraan sivutiedostoon (toimii
+  ilman erillistä kuvakansiota), kuvateksti lisättävissä.
+- Kuva verkosta: lisää kuva osoitteella.
+- Taulukko: valitse rivien/sarakkeiden määrä, otsikkorivi ja otsikko.
+- Video: YouTube-linkki muuntuu automaattisesti upotetuksi videoksi;
+  .mp4/.webm-tiedostot toimivat suoraan.
+- Tekstikehys / Objektikehys: korostettu laatikko otsikolla.
+- Galleria: monta kuvaa vierekkäin – kuvat isontuvat hiiren päällä.
+- Kalenteri: valitse vuosi ja kuukausi, kalenteri rakentuu valmiiksi.
+- PHP-skripti: lisää PHP-koodin sivun loppuun (tallenna sivu sitten
+  .php-päätteellä, jotta se toimii web-palvelimella).
+
+VALIKKO JA OSIOT (Sijoittelu-valikko)
+-------------------------------------
+- Valikko: lisää, muokkaa, poista ja järjestä ylävalikon linkit
+  (ylös/alas-napeilla).
+- Osio (alasivu): luo uuden osioalueen sivulle JA lisää automaattisesti
+  linkin ylävalikkoon. Kirjoita osion nimi, esim. "Tietoja minusta".
+
+SIJOTTELU
+---------
+- Klikkaa aluetta esikatselusta, sitten:
+  Siirrä ylös / Siirrä alas / Kopioi / Poista.
+- Poiston voi perua Kumoa-napilla (↶ tai Ctrl+Z).
+
+VÄRIT (Värit-valikko)
+---------------------
+- Tekstin väri ja korostusväri toimivat valitulle tekstille.
+- Elementin väri/taustaväri vaihtaa klikatun alueen värin
+  (esim. koko tekstikehyksen taustan).
+
+IKKUNOIDSEN SÄÄTÄMINEN (Word-tyyli)
+-----------------------------------
+- Ikkunoiden välissä on raahattava jakaja: pidä hiiren painike
+  pohjassa jakajan päällä ja vedä – kumpikin ikkuna pienenee/suurenee.
+  Jakaja muuttuu siniseksi hiiren ollessa sen päällä.
+- Molempien ikkunoiden otsikkopalkissa on kolme painiketta
+  (aivan kuten Wordissa):
+    ▲  isontaa ikkunan täyteen näkymän (▼ palauttaa takaisin)
+    _  piilottaa ikkunan taustalle
+    ✕  sulkee ikkunan
+- Näkymä-valikosta saat suljetun/piilotetun ikkunan takaisin
+  näytölle sekä "Molemmat ikkunat näkyviin" -palautuksen.
+- Vähintään yksi ikkuna pysyy aina näkyvissä.
+
+SIVUN ASEETUKSET (Sivu-valikko)
+-------------------------------
+- Otsikko, taustaväri, tekstiväri ja leveys – asetukset päivittyvät
+  suoraan sivun koodiin.
+
+TIEDOSTOT (Tiedosto-valikko)
+----------------------------
+- Uusi sivu: tyhjä valmis pohja.
+- Avaa / Tallenna: HTML-kotisivutiedosto (.html, .htm, .xhtml, .php).
+- Tallenna PDF: tulostettava PDF esikatselusta.
+
+KUMOA
+-----
+- ↶-nappi tai Ctrl+Z (esikatselun ollessa kohdistettu).
+
+KOKONÄKYMÄ – KOKO SIVU OMASSA IKKUNASSAAN (F8)
+----------------------------------------------
+- Nappi "🖥 Kokonäkymä (koko sivu)" (kolmannen työkalurivin lopussa),
+  Näkymä-valikko tai F8 avaa koko nettisivun omaan ikkunaansa
+  suoraan ruudun keskelle.
+- Sivua voi muokata suoraan kokonäkymässä samalla tavalla kuin
+  muokkausnäkymässä, ja muutokset tallentuvat samaan sivuun.
+- Pääohjelma jää taustalle toimimaan tavallisena ikkunana.
+- Ikkunoiden välillä vaihdetaan tehtäväpalkista tai Alt+Tab:lla;
+  kokonäkymästä palataan "✔ Valmis – takaisin pääohjelmaan" -napilla
+  tai ESC-näppäimellä.
+- Kun palaat pääohjelmaan, sen esikatselu päivittyy itsestään
+  kokonäkymässä tehdyillä muutoksilla.
+
+VIERINTÄPALKKI JA KELLUVAT IKKUNAT
+----------------------------------
+- Muokkausnäkymässä on aina näkyvä, hiirellä raahattava vierintäpalkki
+  (samanlainen kuin koodi-ikkunassa) – myös kokonäkymässä.
+- Muokkausnäkymä-ikkunan otsikkopalkin 🖥-nappi avaa näkymän isoksi
+  kelluvaksi ikkunaksi; muut ikkunat jäävät taakse kellumaan.
+  (Myös Näkymä-valikko ja F8 toimivat samalla tavalla.)
+- Ikkunoiden välillä liikkuminen hiirellä: vie hiiri ikkunan päälle,
+  niin se nousee päällimmäiseksi (pieni viive). Napsauta vasemmalla
+  hiirinäppäimellä, niin ikkuna avautuu ja voit jatkaa työskentelyä
+  siinä. Pelkkä hiiren vienti ei vie näppäimistöfokusta mukaasi.
+- Hiirivaihdon voi kytkeä pois Näkymä-valikosta
+  ("Ikkunan vaihto hiirellä").
+
+TALLENNE OMA TEKELEESI – voit lukea Ohjeet aina Apua-valikosta!
