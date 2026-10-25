@@ -94,26 +94,10 @@ $rele = @{
 $uusiRelease = Invoke-RestMethod -Method Post -Uri "$api/releases" -Headers $ots -ContentType 'application/json' -Body $rele
 Write-Output ((Aikaleima) + ('   release luotu: ' + $uusiRelease.html_url))
 
-# --- liitteiden lataus (exe viimeksi, isoin) ---
-foreach ($nimi in @('LUE-TAMA.txt', 'Asenna-WebEditori.zip', 'Asenna-WebEditori.exe')) {
-    $tiedosto = Join-Path $Valmis $nimi
-    if (-not (Test-Path $tiedosto)) { Write-Warning ('   liite puuttuu, ohitetaan: ' + $tiedosto); continue }
-    $mt = '{0:N1} Mt' -f ((Get-Item $tiedosto).Length / 1MB)
-    Write-Output ((Aikaleima) + ('   ladataan: ' + $nimi + ' (' + $mt + ')...'))
-    $lataaUrl = ($uusiRelease.upload_url -replace '\{\?name,label\}', ('?name=' + $nimi))
-    $yritys = 0
-    while ($true) {
-        $yritys++
-        try {
-            Invoke-RestMethod -Method Post -Uri $lataaUrl -Headers $ots -ContentType 'application/octet-stream' -InFile $tiedosto | Out-Null
-            break
-        } catch {
-            if ($yritys -ge 3) { throw ('Liitteen lataus epaonnistui (' + $nimi + '): ' + $_.Exception.Message) }
-            Write-Output ((Aikaleima) + '   yritys ' + $yritys + ' epaonnistui, odotetaan ja yritetaan uudelleen...')
-            Start-Sleep -Seconds (15 * $yritys)
-        }
-    }
-}
+# --- liitteet: curl-pohjainen luotettava lataaja ---
+# (PS 5.1:n Invoke-RestMethod jumittaa isot liitteet GitHubin
+#  uploads-pisteeseen, joten laheitos kaytetaan curl.exe -ohjelmaa)
+& (Join-Path $PSScriptRoot 'lataa_liitteet_curl.ps1') -Valmis $Valmis -Tagi $Tagi
 
 Write-Output ((Aikaleima) + '   kaikki liitteet ladattu')
 # Julkaisun URL talteen pakettilaitteelle (ja tarvittaessa yhteenvedon takia)
