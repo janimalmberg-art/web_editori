@@ -1,7 +1,0 @@
-Asenna-WebEditori.exe: liitteen koko ei tasmaa palvelimella!
-At C:\Users\PC\Desktop\web-editori päivitetty\GitHub-Repo\WebEditori-Asennus\lataa_liitteet_curl.ps1:70 char:56
-+ ...  $pituus) { throw ($nimi + ': liitteen koko ei tasmaa palvelimella!') ...
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : OperationStopped: (Asenna-WebEdito...a palvelimella!:String) [], RuntimeException
-    + FullyQualifiedErrorId : Asenna-WebEditori.exe: liitteen koko ei tasmaa palvelimella!
- 

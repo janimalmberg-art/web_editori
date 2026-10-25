@@ -18,4 +18,7 @@ Asenna-WebEditori.zip
 # Testien tulostiedostot
 testitulos.html
 testi_tulos.txt
-testi_virhe.txt
+testi_virhe.txtr
+# Rakennus- ja latauslokit (automaati)
+_*loki*
+_*_pid.txt
