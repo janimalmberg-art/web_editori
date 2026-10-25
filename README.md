@@ -68,6 +68,24 @@ python rakenna.py
 - Hiljaisen asennuksen, poiston ja automaattiset testit löydät
   [WebEditori-Asennus/Asennusohjeet.txt](WebEditori-Asennus/Asennusohjeet.txt)
 
+### 🤖 Automaattinen rakennus + GitHub-julkaisu (yhdellä komennolla)
+
+Repon juuressa on valmis automaattikomento, joka tekee kaiken:
+
+```bat
+Tee-Asennuspaketti.cmd
+```
+
+Tai komentoriviltä: `powershell -NoProfile -ExecutionPolicy Bypass -File WebEditori-Asennus\tee_asennuspaketti.ps1`
+
+Automaatti:
+1. **Rakentaa** asennuspaketin `Asenna-WebEditori.exe` + `.zip` (PyInstaller, riippuvuudet mukana)
+2. **Tallentaa** muutokset GitHubiin (commit + push `main`-haaraan)
+3. **Julkaisee** uuden GitHub Releaseän (tagit kasvatetaan automaattisesti: `v4.0` → `v4.0.1` → …) ja lataa liitteeksi `Asenna-WebEditori.exe`, `Asenna-WebEditori.zip` ja `LUE-TAMA.txt`
+
+Tunnukset luetaan Windowsin git-tunnisteista (credential manager). Valinnaiset liput:
+`-EiRakennusta` (käytä olemassa olevaa pakettia), `-EiGitia`, `-EiJulkaisua`, `-Tagi v4.0.1` (pakota versiointi).
+
 ## 📁 Kansion sisältö
 
 | Tiedosto/kansio | Kuvaus |
